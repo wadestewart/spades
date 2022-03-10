@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { deck } from '../data';
+import { deck } from '../data/data';
 import Card from '../card/Card';
+import './Cards.css';
 
 const Cards = () => {
     // let's write a hook!
@@ -21,6 +22,7 @@ const Cards = () => {
                 <Card
                     key={key}
                     suit={card.suit}
+                    frontImage={card.frontImg}
                     value={card.value}
                 />
             );
@@ -53,7 +55,7 @@ const Cards = () => {
     }
 
     return (
-        <div>
+        <div className='card-list' role='list'>
             {shuffledDeck}
         </div>
     );

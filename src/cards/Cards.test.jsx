@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 
 import Cards from './Cards';
 
-describe('<Routing />', () => {
+describe('<Cards />', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(<Cards />, div);

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const Game = () => {
-    
-
+const CameraAccess = () => {
     const videoRef = useRef(null);
 
     useEffect(() => {
@@ -32,4 +30,4 @@ const Game = () => {
     );
 };
 
-export default Game;
+export default CameraAccess;

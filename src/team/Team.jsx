@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Team.css';
 
+/**
+ * @summary this component will render each individual team
+ *  with Player components (it's children)
+ */
 const Team = props => {
-    const buildTeam = () => {
-        console.log(props.children);        
-
-        return props.children;
-    }
-
     return (
         <div className='team' role='list'>
-            {buildTeam()}
+            {props.children}
         </div>
     );
 };

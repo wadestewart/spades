@@ -1,6 +1,9 @@
 import './App.css';
 import Game from './game/Game';
 
+/**
+ * @summary entry method to run the program
+ */
 function App() {
   return (
     <div className="App">

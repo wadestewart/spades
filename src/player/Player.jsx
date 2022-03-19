@@ -7,7 +7,7 @@ import './Player.css';
  */
 const Player = props => {
     return (
-        <div className='player'>
+        <div className='player' role='listitem'>
             <h2>Player #{props.id}</h2>
             {props.hand}
         </div>

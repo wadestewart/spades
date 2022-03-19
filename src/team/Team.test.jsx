@@ -9,4 +9,13 @@ describe('<Team />', () => {
         const div = document.createElement('div');
         ReactDOM.render(<Team />, div);
     });
+
+    test('renders a team component', () => {
+        const props = {
+            children: []
+        }
+        render(<Team {...props} />);
+        expect(screen.getByRole('list')).toBeInTheDocument();
+    });
 });
+

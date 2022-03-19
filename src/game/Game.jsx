@@ -95,8 +95,8 @@ const Game = () => {
             const id = `${playerId}-${key}`
             return(
                 <TeamButton 
-                    key={id}
                     handleClick={handleTeamChoice}
+                    key={id}
                     player={player}
                     team={i}
                     text={team}

@@ -6,7 +6,7 @@ const TeamButton = props => {
         player: props.player
     };
     return (
-        <button type='button' onClick={e => props.handleClick(params)}>
+        <button type='button' onClick={() => props.handleClick(params)}>
             {props.text}
         </button>
     );

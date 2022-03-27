@@ -14,7 +14,7 @@ describe('<Card />', () => {
 
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Card />, div);
+        ReactDOM.render(<Card {...props} />, div);
     });
     test('passes correct url to img', () => {
         render(<Card {...props} />);

@@ -42,22 +42,43 @@
 Technical Design:
     Components (Top down):
         1. Game:
-            => score state, team state
-        2. Cards:
+            => game score state, team state
+        2. Round:
+            => bid, round score
+        3. Team:
+            => players state (bid and cards)
+        4. Player:
+            => card(hand) state, player bid state
+        5. Cards:
             => value state
                 value should have rank
                     - spades holding higher value than other suits
                     - each suit having it's own ranks
-        3. Team:
-            => player state, team bid state
-        4. Player:
-            => card(hand) state, player bid state
+        
+        
         
 
 Trying to logic out this data flow:
-    Game (root)
-        * Cards (root child - team parent)
-            * Team (cards child - player parent)
-                * Player (team child)
+
+    1. Game (root)
+    -- notes --
+    * Handling the shuffling of the deck and 'dealing' cards (this can maybe be moved down the tree??)
+    * This component should ultimately be handling the (a) Game Score and (b) Team State
+    * There will need to be an event handler from this component to:
+        > Team component - handle team score state
+        > Player component - handle team selection
+
+    ==> Might need a Round component here to track each hand's bid and result <==
+    ==> Not sure if here or after the teams, players, and cards have been built <==
+    Round
+
+        2. Team (root child - player parent)
+            * This component should ultimately be handling the (a) Team (which players) and (b) Bid
+            * There will need to be an event handlers from this component to:
+                > Player component - choose team, choose bid
+                handle team score state
+
+            3. Player (team child)
+                4. Cards (root child - team parent)
 
 

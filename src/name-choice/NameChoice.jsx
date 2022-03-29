@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Team from '../team/Team';
 import dogs from '../img/dogs_playing_poker.jpeg';
 import './NameChoice.css';
 import TeamChoice from '../team-choice/TeamChoice';
@@ -19,7 +18,7 @@ const NameChoice = props => {
 
     // conditionally return the Team component if a player has
     //  submitted a name
-    if (props.player.name) {
+    if (props.player && props.player.name) {
         return (
             <TeamChoice player={props.player}/>
         );

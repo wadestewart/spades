@@ -1,0 +1,22 @@
+.sign-in-form {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+.sign-in-form > img {
+    margin-bottom: 2rem;
+}
+
+.sign-in-form > label > input {
+    height: 2rem;
+    text-align: center;
+    width: 100vw;
+}
+
+.button {
+    height: 2rem;
+    width: 10rem;
+}

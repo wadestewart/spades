@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Team from '../team/Team';
 import dogs from '../img/dogs_playing_poker.jpeg';
 import './SignIn.css';
 
@@ -9,9 +10,15 @@ const SignIn = props => {
     // checking for the player change
     useEffect(() => {
         console.log(props.player)
-      }, [props.player]);
+    }, [props.player]);
 
-    // return some jsx
+    // conditionally return the Team component if a player has
+    //  submitted a name
+    if (props.player.name) {
+        return (
+            <Team player={props.player}/>
+        );
+    }
     return (
         <form className='sign-in-form' onSubmit={e => props.handleSubmit(e, name)}>
             <h1>Pick Your Poison</h1>

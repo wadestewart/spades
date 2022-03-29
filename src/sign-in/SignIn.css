@@ -11,7 +11,9 @@
 }
 
 .sign-in-form > label > input {
-    height: 2rem;
+    border-radius: 0.75rem;
+    height: 3rem;
+    margin: 0 0.5rem;
     text-align: center;
     width: 100vw;
 }

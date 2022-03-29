@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Team from '../team/Team';
 import dogs from '../img/dogs_playing_poker.jpeg';
-import './SignIn.css';
+import './NameChoice.css';
+import TeamChoice from '../team-choice/TeamChoice';
 
-const SignIn = props => {
+/**
+ * @summary This component will start the process of building
+ *  the player, buy gathering their name
+ */
+const NameChoice = props => {
     // local state hook
     const [name, setName] = useState("");
 
@@ -16,7 +21,7 @@ const SignIn = props => {
     //  submitted a name
     if (props.player.name) {
         return (
-            <Team player={props.player}/>
+            <TeamChoice player={props.player}/>
         );
     }
     return (
@@ -36,4 +41,4 @@ const SignIn = props => {
     );
 };
 
-export default SignIn;
+export default NameChoice;

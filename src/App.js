@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 // import Game from './game/Game';
-import SignIn from './sign-in/SignIn';
+import NameChoice from './name-choice/NameChoice';
 
 /**
  * @summary entry method to run the program
@@ -25,7 +25,7 @@ function App() {
   }
   return (
     <div className="App">
-      <SignIn handleSubmit={handleSignInSubmit} player={player} />
+      <NameChoice handleSubmit={handleSignInSubmit} player={player} />
       {/* <Game /> */}
     </div>
   );

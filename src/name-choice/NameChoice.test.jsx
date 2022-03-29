@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SignIn from './SignIn';
+import NameChoice from './NameChoice';
 
-describe('<SignIn />', () => {
+describe('<NameChoice />', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<SignIn />, div);
+        ReactDOM.render(<NameChoice />, div);
     });
 });

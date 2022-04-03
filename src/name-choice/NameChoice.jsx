@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import dogs from '../img/dogs_playing_poker.jpeg';
 import './NameChoice.css';
 import TeamChoice from '../team-choice/TeamChoice';
@@ -11,20 +11,18 @@ const NameChoice = props => {
     // local state hook
     const [name, setName] = useState("");
 
-    // checking for the player change
-    useEffect(() => {
-        console.log(props.player)
-    }, [props.player]);
-
     // conditionally return the Team component if a player has
     //  submitted a name
     if (props.player && props.player.name) {
         return (
-            <TeamChoice player={props.player}/>
+            <TeamChoice
+                player={props.player}
+                handleClick={props.handleTeamChoice}
+            />
         );
     }
     return (
-        <form className='sign-in-form' onSubmit={e => props.handleSubmit(e, name)}>
+        <form className='sign-in-form' onSubmit={e => props.handleNameChoice(e, name)}>
             <h1>Pick Your Poison</h1>
             <img src={dogs} alt="painting of dogs playing poker" />
             <label htmlFor="">

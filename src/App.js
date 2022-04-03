@@ -10,22 +10,34 @@ function App() {
   // local state hook
   const [player, setPlayer] = useState({});
   const [name, setName] = useState("");
-  // effect hooks to build the player and 
+  const [team, setTeam] = useState("");
+  // effect hooks to build the player
   useEffect(() => {
     const builtPlayer = {
       name: name,
+      team: team
     };
     setPlayer(builtPlayer);
-  }, [name]);
+  }, [name, team]);
 
-  // handle submit function
-  const handleSignInSubmit = (e, name) => {
+  // function to handle the user's input and set it as the name 
+  const handleNameChoice = (e, name) => {
     e.preventDefault();
     setName(name);
   }
+
+  // click handler to set the player's team based on the user's selection 
+  const handleTeamChoice = (e, team) => {
+    e.preventDefault();
+    setTeam(team);
+  }
   return (
     <div className="App">
-      <NameChoice handleSubmit={handleSignInSubmit} player={player} />
+      <NameChoice
+        handleNameChoice={handleNameChoice}
+        handleTeamChoice={handleTeamChoice}
+        player={player}
+      />
       {/* <Game /> */}
     </div>
   );

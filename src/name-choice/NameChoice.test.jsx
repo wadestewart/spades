@@ -9,6 +9,7 @@ describe('<NameChoice />', () => {
             name: 'Wade',
         },
     };
+
     it('renders without crashing', () => {
         const div = document.createElement('div');
         ReactDOM.render(<NameChoice props={props} />, div);

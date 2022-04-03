@@ -1,0 +1,8 @@
+.team-choice-container {
+    min-height: 100vh;
+}
+
+.buttons-container {
+    display: flex;
+    min-height: 100%;
+}

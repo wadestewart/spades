@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RoundButton from '../buttons/round-button/RoundButton';
+import { io }  from "socket.io-client";
+const SERVER = 'http://127.0.0.1:3050';
 
 const TeamChoice = props => {
+    // we're testing emitting and receiving messages in real time
+    const socket = io(SERVER);
+
+    // handle the lifecycle of the component
+    useEffect(() => {
+        if (props.player.team) {
+            // emitting
+            socket.on("userSocket", data => {
+                console.log("I'm connected with the Back End hee hee!", data);
+            });
+            socket.emit('player', props.player);
+        }
+    }, [socket, props.player]);
+
     let name;
     if (props.player && props.player.name) {
         ({ player: { name } } = props);

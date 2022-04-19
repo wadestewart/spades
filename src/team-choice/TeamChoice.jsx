@@ -1,22 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import RoundButton from '../buttons/round-button/RoundButton';
+import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
 const SERVER = 'http://127.0.0.1:3050';
 
 const TeamChoice = props => {
-    // we're testing emitting and receiving messages in real time
-    const socket = io(SERVER);
+    const [players, setPlayers] = useState([])
 
     // handle the lifecycle of the component
     useEffect(() => {
+        // we're emitting and receiving messages in real time
+        const socket = io(SERVER);
+
         if (props.player.team) {
-            // emitting
             socket.on("userSocket", data => {
                 console.log("I'm connected with the Back End hee hee!", data);
             });
-            socket.emit('player', props.player);
+            // emitting player over socket
+            socket.emit('player', props.player, (response) => {
+                setPlayers(players => [...players, response]);
+            });
         }
-    }, [socket, props.player]);
+        
+        return () => {
+            socket.off('userSocket');
+            socket.off('players');
+        }
+        // this is needed for socket.io to update on mount only
+        //  eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.player]);
+
+    if (props.player && props.player.team) {
+        return (
+            <Lounge players={players}/>
+        )
+    }
 
     let name;
     if (props.player && props.player.name) {

@@ -8,8 +8,9 @@ import './Player.css';
 const Player = props => {
     return (
         <div className='player' role='listitem'>
-            <h2>Player #{props.id}</h2>
-            {props.hand}
+            <h2>{props.player.name}</h2>
+            <h2>Team {props.player.team}</h2>
+            {/* {props.hand} */}
         </div>
     );
 };

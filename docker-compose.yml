@@ -8,6 +8,25 @@ services:
     volumes:
       - .:/src
       - /src/node_modules
+    networks:
+      - spades-network
     environment:
       - CHOKIDAR_USEPOLLING=true
       - CI=true
+  websocket-api:
+    container_name: spades-api
+    build:
+      context: ../spades-api
+      dockerfile: ../spades-api/Dockerfile
+    ports:
+      - "3050:3050"
+      - "3051:3051"
+    networks:
+      - spades-network
+    volumes:
+      - ../spades-api:/src
+      - /src/node_modules
+    command: /src/node_modules/.bin/nodemon server.js
+
+networks:
+  spades-network:

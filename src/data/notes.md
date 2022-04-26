@@ -85,3 +85,4 @@ Trying to logic out this data flow:
 Resetting a bit, after meeting with Frank:
     1. Focus on building pages, mobile first
     2. Refer to Figma file for UX specs
+    3. using name as player id, validate for dupes

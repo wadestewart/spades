@@ -13,11 +13,14 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - CI=true
+      - REACT_APP_SPADES_API=http://localhost:3050
   websocket-api:
     container_name: spades-api
     build:
       context: ../spades-api
       dockerfile: ../spades-api/Dockerfile
+    environment:
+      - REACT_APP_SPADES_CLIENT=http://localhost:3000
     ports:
       - "3050:3050"
       - "3051:3051"

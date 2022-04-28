@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RoundButton from '../buttons/round-button/RoundButton';
 import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
-const SERVER = 'http://127.0.0.1:3050';
-
+const SERVER = process.env.REACT_APP_SPADES_API;
 const TeamChoice = props => {
     const [players, setPlayers] = useState([])
 
@@ -21,7 +20,7 @@ const TeamChoice = props => {
                 setPlayers(players => [...players, response]);
             });
         }
-        
+
         return () => {
             socket.off('userSocket');
             socket.off('players');

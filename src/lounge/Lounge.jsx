@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Player from '../player/Player';
 import { io }  from "socket.io-client";
-const SERVER = 'http://127.0.0.1:3050';
+const SERVER = process.env.REACT_APP_SPADES_API;
 
 const Lounge = props => {
     const [players, setPlayers] = useState([]);
-    
+
     useEffect(() => {
         // we're emitting and receiving messages in real time
         const socket = io(SERVER);

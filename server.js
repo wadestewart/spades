@@ -6,11 +6,10 @@ const APP_PORT = process.env.PORT || 3000;
 const app = express();
 // app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+// This displays message that the server running and listening to specified port
+app.listen(APP_PORT, () => console.log(`Listening on port ${APP_PORT}`)); //Line 6
 
-// listen for changes on app's port
-app.listen(APP_PORT, function() {
-    console.log(`✅ PORT: ${APP_PORT} 🌟`);
-});
+// create a GET route
+app.get('/express_backend', (req, res) => { //Line 9
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+}); //Line 11

@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "3000:3000"
+      - "80:80"
     volumes:
       - .:/src
       - /src/node_modules
@@ -20,7 +21,7 @@ services:
       context: ../spades-api
       dockerfile: ../spades-api/Dockerfile
     environment:
-      - REACT_APP_SPADES_CLIENT=http://localhost:3000
+      - REACT_APP_SPADES_CLIENT=http://localhost:80
     ports:
       - "3050:3050"
       - "3051:3051"

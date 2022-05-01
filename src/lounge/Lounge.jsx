@@ -4,7 +4,11 @@ import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import { io }  from "socket.io-client";
 const SERVER = process.env.REACT_APP_SPADES_API;
 
-const Lounge = () => {
+/**
+ * @summary This component handles 'listening' for four players from the back end
+ *  and setting the start of the game once there are four
+ */
+const Lounge = props => {
     // local state to hold the players that have joined
     const [players, setPlayers] = useState([]);
 
@@ -16,7 +20,6 @@ const Lounge = () => {
 
         // the players socket
         socket.on('players', players => {
-            console.log(players);
             setPlayers(players);
         })
     }, []);
@@ -38,10 +41,10 @@ const Lounge = () => {
 
     // once we have 4 player, show a button to start the game
     //  there is basic validation to disallow more than 4 players
-    const beginGame = () => {
+    const showStartGameButton = () => {
         if (players.length === 4) {
             return (
-                <PrimaryButton text="Start Game" />
+                <PrimaryButton text="Start Game" handleClick={() => props.handleGameStart(players)} />
             )
         }
     }
@@ -49,8 +52,9 @@ const Lounge = () => {
     // return the rendered players and the button to begin the game
     return (
         <div>
+            <span>Lounge</span>
             {renderPlayers}
-            {beginGame()}
+            {showStartGameButton()}
         </div>
     );
 };

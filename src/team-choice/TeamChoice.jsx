@@ -4,8 +4,6 @@ import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
 const SERVER = process.env.REACT_APP_SPADES_API;
 const TeamChoice = props => {
-    const [players, setPlayers] = useState([])
-
     // handle the lifecycle of the component
     useEffect(() => {
         // we're emitting and receiving messages in real time
@@ -27,10 +25,12 @@ const TeamChoice = props => {
         //  eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.player]);
 
+
+
     // if the user has selected a team, put them in the lounge
     if (props.player && props.player.team) {
         return (
-            <Lounge players={players}/>
+            <Lounge handleGameStart={props.handleGameStart} />
         )
     }
 

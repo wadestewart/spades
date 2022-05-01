@@ -18,6 +18,7 @@ const NameChoice = props => {
             <TeamChoice
                 player={props.player}
                 handleClick={props.handleTeamChoice}
+                handleGameStart={props.handleGameStart}
             />
         );
     }

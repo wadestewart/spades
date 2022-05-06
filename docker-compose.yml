@@ -21,7 +21,7 @@ services:
       context: ../spades-api
       dockerfile: ../spades-api/Dockerfile
     environment:
-      - REACT_APP_SPADES_CLIENT=http://localhost:80
+      - REACT_APP_SPADES_CLIENT=http://localhost
     ports:
       - "3050:3050"
       - "3051:3051"

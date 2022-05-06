@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import RoundButton from '../buttons/round-button/RoundButton';
+import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
-const SERVER = 'http://127.0.0.1:3050';
-
+const SERVER = process.env.REACT_APP_SPADES_API;
 const TeamChoice = props => {
-    const [players, setPlayers] = useState([])
-
     // handle the lifecycle of the component
     useEffect(() => {
         // we're emitting and receiving messages in real time
@@ -17,11 +14,9 @@ const TeamChoice = props => {
                 console.log("I'm connected with the Back End hee hee!", data);
             });
             // emitting player over socket
-            socket.emit('player', props.player, (response) => {
-                setPlayers(players => [...players, response]);
-            });
+            socket.emit('player', props.player);
         }
-        
+
         return () => {
             socket.off('userSocket');
             socket.off('players');
@@ -30,25 +25,35 @@ const TeamChoice = props => {
         //  eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.player]);
 
+
+
+    // if the user has selected a team, put them in the lounge
     if (props.player && props.player.team) {
         return (
-            <Lounge players={players}/>
+            <Lounge handleGameStart={props.handleGameStart} />
         )
     }
 
+    // this is the custom click handler we are passing into the
+    //  reusable button
+    const handleTeamSelection = (e, id) => {
+        props.handleClick(e, id);
+    }
+
+    // deconstruct the player object to get the name
     let name;
     if (props.player && props.player.name) {
         ({ player: { name } } = props);
     }
-    const teamOne = 1;
-    const teamTwo = 2;
+
+    // set the tagline and render the buttons with custom handlers
     const tagline = `${name}, Pick your team`
     return (
         <div className='team-choice-container'>
             <h1>{tagline}</h1>
             <div className='buttons-container'>
-                <RoundButton id={teamOne} text="Team 1" {...props} />
-                <RoundButton id={teamTwo} text="Team 2" {...props} />
+                <PrimaryButton id={1} text="Team 1" handleClick={e => handleTeamSelection(e, 1)} />
+                <PrimaryButton id={2} text="Team 2" handleClick={e => handleTeamSelection(e, 2)} />
             </div>
         </div>
     );

@@ -18,9 +18,12 @@ const NameChoice = props => {
             <TeamChoice
                 player={props.player}
                 handleClick={props.handleTeamChoice}
+                handleGameStart={props.handleGameStart}
             />
         );
     }
+
+    // return the form with the input for a user to select a name
     return (
         <form className='sign-in-form' onSubmit={e => props.handleNameChoice(e, name)}>
             <h1>Pick Your Poison</h1>

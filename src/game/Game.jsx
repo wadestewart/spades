@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { deck } from "../data/data";
 import { shuffle } from '../helpers/shuffle';
 import { buildGamePlayers } from '../helpers/buildGamePlayer';
+import { sortHands } from '../helpers/sortHands';
 import Card from "../card/Card";
 import './Game.css';
 
@@ -32,6 +33,7 @@ const Game = props => {
                     suit={card.suit}
                     frontImage={card.frontImg}
                     value={card.value}
+                    rank={card.rank}
                 />
             );
         });
@@ -59,7 +61,10 @@ const Game = props => {
              hands[j].push(shuffledDeck[i]);
          }
  
-         setPlayerHands(hands);
+         // sort the hands by suit and rank
+         const sortedHands = sortHands(hands);
+         // set the sorted hands to local state
+         setPlayerHands(sortedHands);
      }, [shuffledDeck]);
 
      // return a game board with built players (name, team, hand)

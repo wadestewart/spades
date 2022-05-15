@@ -1,4 +1,4 @@
-.card > img {
-    padding: 1rem;
+.card-image {
+    padding: 1rem 0.25rem;
     height: 10rem;
 }

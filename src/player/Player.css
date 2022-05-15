@@ -1,3 +1,9 @@
 .player {
     border: .1rem solid;
 }
+
+.player-hand {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

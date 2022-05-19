@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Player from '../player/Player';
+import CameraAccess from '../helpers/CameraAccess';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import { io }  from "socket.io-client";
 const SERVER = process.env.REACT_APP_SPADES_API;
@@ -9,6 +10,27 @@ const SERVER = process.env.REACT_APP_SPADES_API;
  *  and setting the start of the game once there are four
  */
 const Lounge = props => {
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        getVideo();
+    }, [videoRef]);
+
+    const getVideo = () => {
+        navigator.mediaDevices
+            .getUserMedia({
+                video: { width: 300 },
+                audio: true,
+            })
+            .then(stream => {
+                let video = videoRef.current;
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(err => {
+                console.error("error:", err);
+            });
+    };
     // local state to hold the players that have joined
     const [players, setPlayers] = useState([]);
 
@@ -53,6 +75,7 @@ const Lounge = props => {
     return (
         <div>
             <span>Lounge</span>
+            <video ref={videoRef} />
             {renderPlayers}
             {showStartGameButton()}
         </div>

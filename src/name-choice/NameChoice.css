@@ -1,24 +1,32 @@
 .sign-in-form {
-    align-items: center;
+    align-items: left;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: flex-start;
     min-height: 100vh;
+    margin: 0 1rem;
 }
 
 .sign-in-form > img {
-    margin-bottom: 2rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.sign-in-form > label {
+    margin: 0 auto;
+    width: 100%
 }
 
 .sign-in-form > label > input {
+    display: inline;
+    border-width: thin;
+    border:none;
+    background-color: #d3d3d3;
     border-radius: 0.75rem;
-    height: 3rem;
-    margin: 0 0.5rem;
+    margin: 2rem 0 1rem 0;
+    padding: 1rem 0;
     text-align: center;
-    width: 20rem;
+    width:100%;
 }
-
 .button {
-    height: 2rem;
-    width: 10rem;
+margin:0;
 }

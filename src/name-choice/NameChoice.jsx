@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dogs from '../img/dogs_playing_poker.jpeg';
+import skulls from '../img/spades-skull.jpg';
 import './NameChoice.css';
 import TeamChoice from '../team-choice/TeamChoice';
 
@@ -26,13 +26,14 @@ const NameChoice = props => {
     // return the form with the input for a user to select a name
     return (
         <form className='sign-in-form' onSubmit={e => props.handleNameChoice(e, name)}>
-            <h1>Pick Your Poison</h1>
-            <img src={dogs} alt="painting of dogs playing poker" />
+            <h1>Pick your poison</h1>
+            <h2>Spades Edition</h2>
+            <img src={skulls} alt="Skulls illustrated inside a spades design." />
             <label htmlFor="">
                 <input
                     type="text"
                     value={name}
-                    placeholder="Your Name"
+                    placeholder="Name"
                     onChange={e => setName(e.target.value)}
                 />
             </label>

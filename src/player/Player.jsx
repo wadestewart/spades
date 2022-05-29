@@ -10,7 +10,9 @@ const Player = props => {
         <div className='player' role='listitem'>
             <h2>{props.player.name}</h2>
             <h2>Team {props.player.team}</h2>
-            {props.hand}
+            <div className='player-hand'>
+                {props.hand}
+            </div>
         </div>
     );
 };

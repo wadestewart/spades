@@ -9,10 +9,4 @@ describe('<Game />', () => {
         const div = document.createElement('div');
         ReactDOM.render(<Game />, div);
     });
-    test('renders a team component', () => {
-        render(<Game />);
-        const button = screen.getAllByRole('button');
-        fireEvent.click(button[0]);
-        expect(screen.getByRole('listitem')).toBeInTheDocument();
-    });
 });

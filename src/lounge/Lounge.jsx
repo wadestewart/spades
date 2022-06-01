@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Player from '../player/Player';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import { io }  from "socket.io-client";
-const SERVER = process.env.REACT_APP_SPADES_API;
+const SERVER = 'http://localhost:3050';
 
 /**
  * @summary This component handles 'listening' for four players from the back end

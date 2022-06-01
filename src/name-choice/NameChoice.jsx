@@ -29,11 +29,12 @@ const NameChoice = props => {
             <h1>Pick your poison</h1>
             <h2>Spades Edition</h2>
             <img src={skulls} alt="Skulls illustrated inside a spades design." />
-            <label htmlFor="">
+            <h3>Name</h3>
+            <label htmlFor="Name">
                 <input
                     type="text"
                     value={name}
-                    placeholder="Name"
+                    placeholder=""
                     onChange={e => setName(e.target.value)}
                 />
             </label>

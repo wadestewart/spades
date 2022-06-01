@@ -1,8 +1,8 @@
 FROM arm32v6/node:16.14-alpine as build
 EXPOSE 3000
 WORKDIR /src
-ENV REACT_APP_SPADES_API=http://localhost:3050
-# ENV REACT_APP_SPADES_API=http://spades-api.192.168.1.29.nip.io
+# ENV REACT_APP_SPADES_API=http://localhost:3050
+ENV REACT_APP_SPADES_API=https://api.spades.fun
 COPY . .
 
 RUN npm ci

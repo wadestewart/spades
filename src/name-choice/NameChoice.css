@@ -7,8 +7,22 @@
 }
 
 .sign-in-form > img {
-    margin: 0 auto;
-    width: 100%;
+    margin: 4rem auto;
+    width: 80%;
+}
+
+@media screen and (min-width: 800px) {
+  .sign-in-form > img {
+    margin: 4rem auto;
+    width: 10%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sign-in-form > img {
+    margin: 4rem auto;
+    width: 20%;
+  }
 }
 
 .sign-in-form > label {
@@ -16,17 +30,43 @@
     width: 100%
 }
 
+@media screen and (min-width: 800px) {
+  .sign-in-form > label {
+    margin: 0 auto;
+    width: 100%
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sign-in-form > label {
+    margin: 0 auto;
+    width: 50%
+  }
+}
+
 .sign-in-form > label > input {
     display: inline;
     border-width: thin;
-    border:none;
-    background-color: #d3d3d3;
-    border-radius: 0.75rem;
-    margin: 2rem 0 1rem 0;
-    padding: 1rem 0;
-    text-align: center;
-    width:100%;
+    background-color: none;
+    border-radius: 0.40rem;
+    margin: 0 0 1.5rem 0;
+    padding: 1rem;
+    text-align: left;
+    width: calc(100% - 2rem);
 }
-.button {
+
+.sign-in-form > h1 {
+    margin:2rem 0 .5rem 0;
+}
+
+.sign-in-form > h2 {
+    margin: 0;
+}
+
+.sign-in-form > h3 {
+    margin-bottom: .2rem;
+}
+
+/* input.button {
 margin:0;
-}
+} */

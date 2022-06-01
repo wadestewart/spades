@@ -2,11 +2,10 @@
     height: auto;
     width: 10rem;
     padding: 1rem;
-    margin-top: 1rem;
     border: none;
-    border-radius: 1rem;
+    border-radius: 2rem;
     color:white;
     font-weight: 700;
-    background-color: black;
+    background-color: #d50024;
 
 }

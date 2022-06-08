@@ -1,13 +1,60 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #313638;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  color: #313638;
+  font-weight: 900;
+
+}
+
+@media screen and (min-width: 800px) {
+  .sign-in-form > h1 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    color: #313638;
+    font-weight: 900;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sign-in-form > h1 {
+    font-size: 3rem;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    color: #313638;
+    font-weight: 900;
+  }
+}
+
+h2 {
+  font-size: 1rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  color: #313638;
+  font-weight: 500;
+
+}
+
+h3 {
+  font-size: .8rem;
+  text-align: left;
+  padding: 0;
+  color: #000000;
+  font-weight: 500;
+
 }

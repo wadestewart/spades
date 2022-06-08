@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
-const SERVER = process.env.REACT_APP_SPADES_API;
+const SERVER = 'http://localhost:3050';
 const TeamChoice = props => {
     // handle the lifecycle of the component
     useEffect(() => {

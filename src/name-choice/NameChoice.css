@@ -1,3 +1,9 @@
+body {
+  /* background-color: #5E6167; */
+  background: rgb(94,97,103);
+  background: linear-gradient(180deg, rgba(94,97,103,1) 0%, rgba(125,130,135,1) 100%);
+}
+
 .sign-in-form {
     align-items: left;
     display: flex;
@@ -7,8 +13,8 @@
 }
 
 .sign-in-form > img {
-    margin: 4rem auto;
-    width: 80%;
+    margin: -3rem -2rem -2rem;
+    width: 120%;
 }
 
 @media screen and (min-width: 800px) {
@@ -30,26 +36,12 @@
     width: 100%
 }
 
-@media screen and (min-width: 800px) {
-  .sign-in-form > label {
-    margin: 0 auto;
-    width: 100%
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .sign-in-form > label {
-    margin: 0 auto;
-    width: 50%
-  }
-}
-
 .sign-in-form > label > input {
     display: inline;
     border-width: thin;
     background-color: none;
     border-radius: 0.40rem;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.2rem 0;
     padding: 1rem;
     text-align: left;
     width: calc(100% - 2rem);
@@ -67,6 +59,6 @@
     margin-bottom: .2rem;
 }
 
-/* input.button {
-margin:0;
-} */
+input.button {
+margin:0 auto;
+}

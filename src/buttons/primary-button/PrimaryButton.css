@@ -1,11 +1,11 @@
 .button {
     height: auto;
-    width: 10rem;
+    width: 100%;
     padding: 1rem;
     border: none;
     border-radius: 2rem;
     color:white;
     font-weight: 700;
-    background-color: #d50024;
+    background-color: #FF2247;
 
 }

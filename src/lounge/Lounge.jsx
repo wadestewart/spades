@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Player from '../player/Player';
-import CameraAccess from '../helpers/CameraAccess';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import { io }  from "socket.io-client";
 const SERVER = 'http://localhost:3050';
@@ -10,17 +9,41 @@ const SERVER = 'http://localhost:3050';
  *  and setting the start of the game once there are four
  */
 const Lounge = props => {
+    // creating ref for video
     const videoRef = useRef(null);
 
+    // listening for updates of the videoRef dependency array
     useEffect(() => {
-        getVideo();
+        getMedia();
     }, [videoRef]);
 
-    const getVideo = () => {
+    // method to handle streaming the video
+    const getMedia = async () => {
+        // set constraints for video and start stream
+        const vidConstraints = {
+            audio: false,
+            video: {
+                facingMode: "user",
+                width: 200
+            }
+        };
+        const vidStream = await navigator.mediaDevices.getUserMedia(vidConstraints);
+        // set constraints for audio and start stream
+        const audioConstraints = {
+            audio: {
+                echoCancellation: {exact: false}
+            }
+        };
+        const audioStream = await navigator.mediaDevices.getUserMedia(audioConstraints);
+
+        // cross the streams
+        const crossedStreams = new MediaStream([...vidStream.getVideoTracks(), ...audioStream.getAudioTracks()]);
         navigator.mediaDevices
             .getUserMedia({
                 video: { width: 300 },
-                audio: true,
+            audio: {
+                echoCancellation: {exact: false}
+            },
             })
             .then(stream => {
                 let video = videoRef.current;
@@ -75,7 +98,7 @@ const Lounge = props => {
     return (
         <div>
             <span>Lounge</span>
-            <video ref={videoRef} />
+            <video muted="true" ref={videoRef} />
             {renderPlayers}
             {showStartGameButton()}
         </div>

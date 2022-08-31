@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import sword from '../img/sword.svg';
+import crown from '../img/crown.svg';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import Lounge from '../lounge/Lounge';
 import { io }  from "socket.io-client";
-const SERVER = process.env.REACT_APP_SPADES_API;
+import './TeamChoice.css';
+const SERVER = 'http://localhost:3050';
 const TeamChoice = props => {
     // handle the lifecycle of the component
     useEffect(() => {
@@ -47,13 +50,19 @@ const TeamChoice = props => {
     }
 
     // set the tagline and render the buttons with custom handlers
-    const tagline = `${name}, Pick your team`
+    const tagline = `${name}, pick your team`
     return (
         <div className='team-choice-container'>
             <h1>{tagline}</h1>
             <div className='buttons-container'>
-                <PrimaryButton id={1} text="Team 1" handleClick={e => handleTeamSelection(e, 1)} />
-                <PrimaryButton id={2} text="Team 2" handleClick={e => handleTeamSelection(e, 2)} />
+              <div className='team-button'>
+                <img src={crown} alt="Crown icon" />
+                <PrimaryButton id={1} text="Crown Royals" handleClick={e => handleTeamSelection(e, 1)} />
+              </div>
+              <div className='team-button'>
+                <img src={sword} alt="Sword icon" />
+                <PrimaryButton id={2} text="Cutthroats" handleClick={e => handleTeamSelection(e, 2)} />
+              </div>
             </div>
         </div>
     );

@@ -58,12 +58,14 @@ describe('Helper Functions', () => {
                 hand={hands[0]}
                 id={0}
                 player={players[0]}
+                privatePlayer
             />,
             <Player
                 key={1}
                 hand={hands[1]}
                 id={1}
                 player={players[1]}
+                privatePlayer
             />,
         ]
 

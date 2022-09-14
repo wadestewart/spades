@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
 import Lounge from '../lounge/Lounge';
-import { io }  from "socket.io-client";
-const SERVER = process.env.REACT_APP_SPADES_API;
+import socket from '../helpers/socket';
 const TeamChoice = props => {
+    const { player } = props
     // handle the lifecycle of the component
     useEffect(() => {
-        // we're emitting and receiving messages in real time
-        const socket = io(SERVER);
-
-        if (props.player.team) {
-            socket.on("userSocket", data => {
-                console.log("I'm connected with the Back End hee hee!", data);
+        // check for the player's team to be populated before connecting to the socket
+        if (player.team.name) {
+            // we're emitting and receiving messages in real time
+            socket.auth = { username: player.name }
+            socket.on("userSocket", socketId => {
+                console.log("I'm connected with the Back End hee hee!", socketId)
             });
             // emitting player over socket
-            socket.emit('player', props.player);
+            socket.emit('player', player)
+            return () => {
+                socket.off('userSocket');
+            }
         }
 
-        return () => {
-            socket.off('userSocket');
-            socket.off('players');
-        }
-        // this is needed for socket.io to update on mount only
-        //  eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.player]);
-
-
+    }, [player]);
 
     // if the user has selected a team, put them in the lounge
-    if (props.player && props.player.team) {
+    if (props.player && props.player.team.name) {
         return (
             <Lounge handleGameStart={props.handleGameStart} />
         )

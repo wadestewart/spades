@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Player from '../player/Player';
 import PrimaryButton from '../buttons/primary-button/PrimaryButton';
-import { io }  from "socket.io-client";
-const SERVER = process.env.REACT_APP_SPADES_API;
+import socket from '../helpers/socket'
 
 /**
  * @summary This component handles 'listening' for four players from the back end
@@ -15,13 +14,17 @@ const Lounge = props => {
     // user effect to connect to players socket and get real time
     //  updates from the back end
     useEffect(() => {
+        socket.connect();
         // we're emitting and receiving messages in real time
-        const socket = io(SERVER);
-
         // the players socket
-        socket.on('players', players => {
+        socket.on('loungePlayers', players => {
+            console.log(players)
             setPlayers(players);
         })
+
+        return () => {
+            socket.off('loungePlayers');
+        }
     }, []);
 
     // set a global key value to assign to each player
@@ -33,7 +36,11 @@ const Lounge = props => {
             let id = player.name;
             key++;
             return (
-                <Player id={id} player={player} key={key} />
+                <Player
+                    id={id}
+                    player={player}
+                    key={key}
+                />
             )
         }
         return null;

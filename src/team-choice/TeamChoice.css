@@ -1,8 +1,23 @@
 .team-choice-container {
     min-height: 100vh;
+    margin: 1rem 2rem;
+}
+
+.team-choice-container > h1 {
+  margin-bottom:2rem;
 }
 
 .buttons-container {
     display: flex;
     min-height: 100%;
+}
+
+div.team-button {
+    text-align: center;
+    width: 80%;
+}
+
+.team-button > img{
+  width: 80%;
+  margin-bottom: 1rem;
 }

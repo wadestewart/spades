@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dogs from '../img/dogs_playing_poker.jpeg';
+import spade from '../img/spade.svg';
 import './NameChoice.css';
 import TeamChoice from '../team-choice/TeamChoice';
 
@@ -7,6 +7,7 @@ import TeamChoice from '../team-choice/TeamChoice';
  * @summary This component will start the process of building
  *  the player, buy gathering their name
  */
+
 const NameChoice = props => {
     // local state hook
     const [name, setName] = useState("");
@@ -26,17 +27,19 @@ const NameChoice = props => {
     // return the form with the input for a user to select a name
     return (
         <form className='sign-in-form' onSubmit={e => props.handleNameChoice(e, name)}>
-            <h1>Pick Your Poison</h1>
-            <img src={dogs} alt="painting of dogs playing poker" />
-            <label htmlFor="">
+        <img src={spade} alt="Spade icon" />
+
+            <h1>Spades</h1>
+            <h3>Name</h3>
+            <label htmlFor="Name">
                 <input
                     type="text"
                     value={name}
-                    placeholder="Your Name"
+                    placeholder=""
                     onChange={e => setName(e.target.value)}
                 />
             </label>
-            <input className='button' type="submit" value="Submit" />
+            <input className='button' type="submit" value="Pick a team" />
         </form>
     );
 };
